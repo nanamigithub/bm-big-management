@@ -1,72 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Module Manager</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body {
-      font-family: sans-serif;
-      padding: 2em;
+    body { font-family: sans-serif; padding: 1.5em; }
+    .tabs, .sub-tabs { display: flex; gap: 1em; margin-bottom: 1em; flex-wrap: wrap; }
+    .tab, .sub-tab {
+      cursor: pointer; padding: 0.5em 1em; border: 1px solid #aaa;
+      border-radius: 4px; background: #eee;
     }
-    h1 {
-      font-size: 1.8em;
-      margin-bottom: 1em;
-    }
+    .tab.active, .sub-tab.active { background: #2563eb; color: white; }
     .module-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1em;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1em;
     }
     .module-card {
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 1em;
-      background-color: #f9f9f9;
+      border: 1px solid #ccc; border-radius: 6px; padding: 1em; background: #f9f9f9;
     }
-    .module-card h3 {
-      margin-top: 0;
-    }
-    .module-card p {
-      font-size: 0.9em;
-      color: #666;
-    }
-    .module-card button {
-      margin-top: 0.5em;
-    }
+    .module-card h3 { margin-top: 0; font-size: 1em; }
+    .module-card p { font-size: 0.85em; color: #555; }
+    .module-card img { width: 40px; height: 40px; margin-bottom: 0.5em; }
   </style>
 </head>
 <body>
   <h1>📦 モジュール管理</h1>
-  <p>モジュールの有効化・無効化を管理できます。</p>
+  <p>シリーズと分類でモジュールを絞り込みます。</p>
 
-  <div class="module-list" id="moduleList">
-    <!-- modules will be injected here -->
-  </div>
+  <div class="tabs" id="seriesTabs"></div>
+  <div class="sub-tabs" id="fieldTabs"></div>
+  <div class="module-list" id="moduleList"></div>
 
   <script>
+    let apps = [];
+    let selectedSeries = '';
+    let selectedField = '';
+
     fetch('apps.json')
       .then(res => res.json())
-      .then(apps => {
-        const list = document.getElementById('moduleList');
-        apps.forEach(app => {
-          const card = document.createElement('div');
-          card.className = 'module-card';
-          card.innerHTML = `
-            <h3>${app.name}</h3>
-            <p>${app.desc || 'No description available.'}</p>
-            <button onclick="toggleEnable('${app.code}')">
-              ${app.enabled ? 'Disable' : 'Enable'}
-            </button>
-          `;
-          list.appendChild(card);
+      .then(data => {
+        apps = data;
+        const seriesSet = [...new Set(apps.map(a => a.seriesName))];
+        const seriesTabs = document.getElementById('seriesTabs');
+
+        seriesSet.forEach(series => {
+          const tab = document.createElement('div');
+          tab.className = 'tab';
+          tab.textContent = series;
+          tab.onclick = () => {
+            selectedSeries = series;
+            selectedField = '';
+            updateTabs(seriesSet, series);
+            updateSubTabs(series);
+            updateModules();
+          };
+          seriesTabs.appendChild(tab);
         });
       });
 
-    function toggleEnable(code) {
-      alert('Toggle enable/disable for: ' + code);
-      // Note: Saving changes is not implemented yet.
+    function updateTabs(seriesSet, active) {
+      [...document.querySelectorAll('.tab')].forEach(t => {
+        t.classList.toggle('active', t.textContent === active);
+      });
+    }
+
+    function updateSubTabs(series) {
+      const fieldTabs = document.getElementById('fieldTabs');
+      fieldTabs.innerHTML = '';
+      const fields = [...new Set(apps.filter(a => a.seriesName === series).map(a => a.fieldName))];
+      fields.forEach(field => {
+        const tab = document.createElement('div');
+        tab.className = 'sub-tab';
+        tab.textContent = field;
+        tab.onclick = () => {
+          selectedField = field;
+          updateSubTabUI(field);
+          updateModules();
+        };
+        fieldTabs.appendChild(tab);
+      });
+    }
+
+    function updateSubTabUI(active) {
+      [...document.querySelectorAll('.sub-tab')].forEach(t => {
+        t.classList.toggle('active', t.textContent === active);
+      });
+    }
+
+    function updateModules() {
+      const list = document.getElementById('moduleList');
+      list.innerHTML = '';
+
+      const filtered = apps.filter(app =>
+        app.seriesName === selectedSeries && app.fieldName === selectedField
+      );
+
+      filtered.forEach(app => {
+        const card = document.createElement('div');
+        card.className = 'module-card';
+        card.innerHTML = `
+          <img src="${app.icon || 'default-icon.png'}" alt="icon">
+          <h3>${app.appName}</h3>
+          <p>${app.desc || 'No description.'}</p>
+          <button>${app.enabled ? 'Disable' : 'Enable'}</button>
+        `;
+        list.appendChild(card);
+      });
     }
   </script>
 </body>
