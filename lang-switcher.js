@@ -1,6 +1,6 @@
 document.getElementById('lang-select').addEventListener('change', function () {
   const lang = this.value;
-  fetch(`/lang/${lang}.json`)
+  fetch(`lang/${lang}.json`)
     .then(res => res.json())
     .then(dict => {
       document.querySelectorAll('[data-lang]').forEach(el => {
