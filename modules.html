@@ -1,113 +1,87 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Module Manager</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    body { font-family: sans-serif; padding: 1.5em; }
-    .tabs, .sub-tabs { display: flex; gap: 1em; margin-bottom: 1em; flex-wrap: wrap; }
-    .tab, .sub-tab {
-      cursor: pointer; padding: 0.5em 1em; border: 1px solid #aaa;
-      border-radius: 4px; background: #eee;
-    }
-    .tab.active, .sub-tab.active { background: #2563eb; color: white; }
-    .module-list {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1em;
-    }
-    .module-card {
-      border: 1px solid #ccc; border-radius: 6px; padding: 1em; background: #f9f9f9;
-    }
-    .module-card h3 { margin-top: 0; font-size: 1em; }
-    .module-card p { font-size: 0.85em; color: #555; }
-    .module-card img { width: 40px; height: 40px; margin-bottom: 0.5em; }
+    .tab-bar { margin-top: 1em; display: flex; gap: 0.5em; flex-wrap: wrap; }
+    .tab-bar button.active { background-color: #2563eb; color: white; }
+    .tab-bar button { padding: 0.5em 1em; border: 1px solid #ccc; background: #f3f3f3; cursor: pointer; }
+    .module-card { border: 1px solid #ddd; padding: 1em; border-radius: 6px; width: 200px; }
+    .module-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1em; margin-top: 1em; }
   </style>
 </head>
 <body>
-  <h1>📦 モジュール管理</h1>
-  <p>シリーズと分類でモジュールを絞り込みます。</p>
-
-  <div class="tabs" id="seriesTabs"></div>
-  <div class="sub-tabs" id="fieldTabs"></div>
-  <div class="module-list" id="moduleList"></div>
-
+  <header>
+    <h1>📦 モジュール管理</h1>
+    <p>シリーズと分類でモジュールを絞り込みます。</p>
+  </header>
+  <main>
+    <div id="series-tabs" class="tab-bar"></div>
+    <div id="field-tabs" class="tab-bar"></div>
+    <div id="modules-container" class="module-grid"></div>
+  </main>
   <script>
-    let apps = [];
-    let selectedSeries = '';
-    let selectedField = '';
-
-    fetch('apps.json')
-      .then(res => res.json())
-      .then(data => {
-        apps = data;
-        const seriesSet = [...new Set(apps.map(a => a.seriesName))];
-        const seriesTabs = document.getElementById('seriesTabs');
-
-        seriesSet.forEach(series => {
-          const tab = document.createElement('div');
-          tab.className = 'tab';
-          tab.textContent = series;
-          tab.onclick = () => {
-            selectedSeries = series;
-            selectedField = '';
-            updateTabs(seriesSet, series);
-            updateSubTabs(series);
-            updateModules();
-          };
-          seriesTabs.appendChild(tab);
-        });
-      });
-
-    function updateTabs(seriesSet, active) {
-      [...document.querySelectorAll('.tab')].forEach(t => {
-        t.classList.toggle('active', t.textContent === active);
-      });
+    let apps = [], currentSeries = '', currentField = '';
+    async function loadApps() {
+      const res = await fetch('data/apps.json');
+      apps = await res.json();
+      renderSeriesTabs();
     }
 
-    function updateSubTabs(series) {
-      const fieldTabs = document.getElementById('fieldTabs');
-      fieldTabs.innerHTML = '';
-      const fields = [...new Set(apps.filter(a => a.seriesName === series).map(a => a.fieldName))];
-      fields.forEach(field => {
-        const tab = document.createElement('div');
-        tab.className = 'sub-tab';
-        tab.textContent = field;
-        tab.onclick = () => {
-          selectedField = field;
-          updateSubTabUI(field);
-          updateModules();
+    function renderSeriesTabs() {
+      const container = document.getElementById('series-tabs');
+      const series = [...new Set(apps.map(app => app.seriesName))];
+      container.innerHTML = '';
+      series.forEach(s => {
+        const btn = document.createElement('button');
+        btn.textContent = s;
+        btn.onclick = () => {
+          currentSeries = s;
+          renderFieldTabs();
         };
-        fieldTabs.appendChild(tab);
+        container.appendChild(btn);
       });
     }
 
-    function updateSubTabUI(active) {
-      [...document.querySelectorAll('.sub-tab')].forEach(t => {
-        t.classList.toggle('active', t.textContent === active);
+    function renderFieldTabs() {
+      const container = document.getElementById('field-tabs');
+      const filtered = apps.filter(app => app.seriesName === currentSeries);
+      const fields = [...new Set(filtered.map(app => app.fieldName))];
+      container.innerHTML = '';
+      fields.forEach(f => {
+        const btn = document.createElement('button');
+        btn.textContent = f;
+        btn.onclick = () => {
+          currentField = f;
+          renderModules();
+        };
+        container.appendChild(btn);
       });
     }
 
-    function updateModules() {
-      const list = document.getElementById('moduleList');
-      list.innerHTML = '';
-
+    function renderModules() {
+      const container = document.getElementById('modules-container');
       const filtered = apps.filter(app =>
-        app.seriesName === selectedSeries && app.fieldName === selectedField
+        app.seriesName === currentSeries && app.fieldName === currentField
       );
-
+      container.innerHTML = '';
       filtered.forEach(app => {
-        const card = document.createElement('div');
-        card.className = 'module-card';
-        card.innerHTML = `
-          <img src="${app.icon || 'default-icon.png'}" alt="icon">
-          <h3>${app.appName}</h3>
-          <p>${app.desc || 'No description.'}</p>
+        const div = document.createElement('div');
+        div.className = 'module-card';
+        div.innerHTML = `
+          <strong>${app.appName || 'Default'}</strong>
+          <p>${app.fieldName}</p>
           <button>${app.enabled ? 'Disable' : 'Enable'}</button>
         `;
-        list.appendChild(card);
+        container.appendChild(div);
       });
     }
+
+    loadApps();
   </script>
 </body>
 </html>
