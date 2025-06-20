@@ -2,18 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>BM-Big-Management</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BM Big Management</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="lang-switcher.js"></script>
+  <script defer src="main.js"></script>
 </head>
 <body>
-  <select id="language-select">
-    <option value="en">English</option>
-    <option value="zh">中文</option>
-    <option value="ja">日本語</option>
-  </select>
-
-  <h1 id="title"></h1>
-  <p id="description"></p>
-
-  <script src="lang-switcher.js"></script>
+  <header>
+    <img src="logo.svg" alt="BM Logo" class="logo" />
+    <h1 data-lang="homepage.title">BMシステムへようこそ</h1>
+    <p data-lang="homepage.description">モジュール化された拡張可能な個人管理システムです。</p>
+    <select id="lang-select">
+      <option value="ja">日本語</option>
+      <option value="en">English</option>
+      <option value="zh">中文</option>
+    </select>
+  </header>
+  <nav class="quick-buttons">
+    <button onclick="goto('plan-big-manage')" data-lang="btn.plan">計画 PLAN</button>
+    <button onclick="goto('work-big-manage')" data-lang="btn.work">仕事 WORK</button>
+    <button onclick="goto('life-big-manage')" data-lang="btn.life">生活 LIFE</button>
+    <button onclick="goto('study-big-manage')" data-lang="btn.study">学習 STUDY</button>
+  </nav>
+  <main>
+    <h2 data-lang="homepage.apps">有効なモジュール一覧</h2>
+    <div id="apps-container"></div>
+    <button class="add-button" onclick="alert('Open module manager')">
+      <span id="addModuleBtn">+</span>
+    </button>
+  </main>
 </body>
 </html>

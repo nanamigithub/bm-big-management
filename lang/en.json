@@ -1,4 +1,9 @@
 {
-  "title": "Welcome to BM System",
-  "description": "A modular, extensible personal management system."
+  "homepage.title": "Welcome to BM System",
+  "homepage.description": "A modular and extensible personal management system.",
+  "homepage.apps": "Enabled Apps",
+  "btn.plan": "PLAN",
+  "btn.work": "WORK",
+  "btn.life": "LIFE",
+  "btn.study": "STUDY"
 }

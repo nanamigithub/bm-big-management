@@ -1,0 +1,5 @@
+body { font-family: sans-serif; padding: 2em; }
+h1 { font-size: 2em; font-weight: bold; margin-bottom: 1em; }
+.logo { height: 40px; }
+.quick-buttons button { margin-right: 1em; }
+.app-card { padding: 1em; border: 1px solid #ccc; border-radius: 8px; margin-bottom: 1em; }
