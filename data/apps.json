@@ -981,7 +981,9 @@
     "appTypeCode":"00",
     "appTypeCode.1":"Health",
     "appCode":"00",
-    "appName":"food"
+    "appName":"food",
+    "appPath": "apps/food/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -993,7 +995,9 @@
     "appTypeCode":"00",
     "appTypeCode.1":"Health",
     "appCode":"01",
-    "appName":"fitness"
+    "appName":"fitness",
+    "appPath": "apps/fitness/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1005,7 +1009,9 @@
     "appTypeCode":"00",
     "appTypeCode.1":"Health",
     "appCode":"02",
-    "appName":"blood sugar"
+    "appName":"blood-sugar",
+    "appPath": "apps/lood-sugar/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1017,7 +1023,9 @@
     "appTypeCode":"00",
     "appTypeCode.1":"Health",
     "appCode":"03",
-    "appName":"blood pressure"
+    "appName":"blood-pressure",
+    "appPath": "apps/blood-pressure/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1029,7 +1037,9 @@
     "appTypeCode":"00",
     "appTypeCode.1":"Health",
     "appCode":"04",
-    "appName":"medicine health"
+    "appName":"medicine-health",
+    "appPath": "apps/medicine-health/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1041,7 +1051,9 @@
     "appTypeCode":"00",
     "appTypeCode.1":"Health",
     "appCode":"05",
-    "appName":"hair health"
+    "appName":"hair-health",
+    "appPath": "apps/hair-health/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1053,7 +1065,9 @@
     "appTypeCode":"00",
     "appTypeCode.1":"Health",
     "appCode":"06",
-    "appName":"eye health"
+    "appName":"eye-health",
+    "appPath": "apps/eye-health/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1065,7 +1079,9 @@
     "appTypeCode":"00",
     "appTypeCode.1":"Health",
     "appCode":"07",
-    "appName":"teeth health"
+    "appName":"teeth-health",
+    "appPath": "apps/teeth-health/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1077,7 +1093,9 @@
     "appTypeCode":"00",
     "appTypeCode.1":"Health",
     "appCode":"08",
-    "appName":"skin health"
+    "appName":"skin-health",
+    "appPath": "apps/skin-health/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1089,7 +1107,9 @@
     "appTypeCode":"00",
     "appTypeCode.1":"Health",
     "appCode":"09",
-    "appName":"nose health"
+    "appName":"nose-health",
+    "appPath": "apps/nose-health/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1101,7 +1121,9 @@
     "appTypeCode":"01",
     "appTypeCode.1":"beauty",
     "appCode":"00",
-    "appName":"body beauty"
+    "appName":"body-beauty",
+    "appPath": "apps/body-beauty/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1113,7 +1135,9 @@
     "appTypeCode":"01",
     "appTypeCode.1":"beauty",
     "appCode":"01",
-    "appName":"skin beauty"
+    "appName":"skin-beauty",
+    "appPath": "apps/skin-beauty/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1125,7 +1149,9 @@
     "appTypeCode":"01",
     "appTypeCode.1":"beauty",
     "appCode":"02",
-    "appName":"hair beauty"
+    "appName":"hair-beauty",
+    "appPath": "apps/hair-beauty/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1137,7 +1163,9 @@
     "appTypeCode":"01",
     "appTypeCode.1":"beauty",
     "appCode":"03",
-    "appName":"eyebrow beauty"
+    "appName":"eyebrow-beauty",
+    "appPath": "apps/eyebrow-beauty/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1149,7 +1177,9 @@
     "appTypeCode":"01",
     "appTypeCode.1":"beauty",
     "appCode":"04",
-    "appName":"eye beauty"
+    "appName":"eye-beauty",
+    "appPath": "apps/eye-beauty/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1161,7 +1191,9 @@
     "appTypeCode":"01",
     "appTypeCode.1":"beauty",
     "appCode":"05",
-    "appName":"nose beauty"
+    "appName":"nose-beauty",
+    "appPath": "apps/nose-beauty/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1173,7 +1205,9 @@
     "appTypeCode":"01",
     "appTypeCode.1":"beauty",
     "appCode":"06",
-    "appName":"lip beauty"
+    "appName":"lip-beauty",
+    "appPath": "apps/lip-beauty/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1185,7 +1219,9 @@
     "appTypeCode":"01",
     "appTypeCode.1":"beauty",
     "appCode":"07",
-    "appName":"teeth beauty"
+    "appName":"teeth-beauty",
+    "appPath": "apps/teeth-beauty/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1197,7 +1233,9 @@
     "appTypeCode":"01",
     "appTypeCode.1":"beauty",
     "appCode":"08",
-    "appName":"hands beauty"
+    "appName":"hands-beauty",
+    "appPath": "apps/hands-beauty/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1209,7 +1247,9 @@
     "appTypeCode":"01",
     "appTypeCode.1":"beauty",
     "appCode":"09",
-    "appName":"foot beauty"
+    "appName":"foot-beauty",
+    "appPath": "apps/foot-beauty/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1221,7 +1261,9 @@
     "appTypeCode":"00",
     "appTypeCode.1":"default81",
     "appCode":"00",
-    "appName":"daily Object"
+    "appName":"daily-Object",
+    "appPath": "apps/daily-Object/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1233,7 +1275,9 @@
     "appTypeCode":"01",
     "appTypeCode.1":"default82",
     "appCode":"01",
-    "appName":"clothes"
+    "appName":"clothes",
+    "appPath": "apps/clothes/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1245,7 +1289,9 @@
     "appTypeCode":"02",
     "appTypeCode.1":"default83",
     "appCode":"02",
-    "appName":"books"
+    "appName":"books",
+    "appPath": "apps/books/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1257,7 +1303,9 @@
     "appTypeCode":"03",
     "appTypeCode.1":"default84",
     "appCode":"03",
-    "appName":"Electronics"
+    "appName":"Electronics",
+    "appPath": "apps/Electronics/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",
@@ -1269,7 +1317,9 @@
     "appTypeCode":"04",
     "appTypeCode.1":"default85",
     "appCode":"04",
-    "appName":"Default"
+    "appName":"Default",
+    "appPath": "apps/Default/index.html",
+    "enabled": true
   },
   {
     "systemCode":"00",

@@ -75,7 +75,9 @@
         div.innerHTML = `
           <strong>${app.appName || 'Default'}</strong>
           <p>${app.fieldName}</p>
-          <button>${app.enabled ? 'Disable' : 'Enable'}</button>
+           <a href="${app.appPath}" target="_blank">
+    <button>${app.enabled ? 'Open' : 'Enable'}</button>
+  </a>
         `;
         container.appendChild(div);
       });
