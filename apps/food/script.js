@@ -10,11 +10,24 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const food = document.getElementById("food-input").value.trim();
     const calorie = document.getElementById("calorie-input").value;
+    const date = new Date().toISOString().split("T")[0]; // 添加当前日期
+    const meal = document.getElementById("meal-select").value; // 可以未来扩展为早餐/午餐/晚餐选择项
 
     if (!food || !calorie) return;
 
     addRow(food, calorie);
     saveData();
+    // === 添加新的存储结构（含日期）===
+    const newRecord = {
+    food: food,
+    calories: calorie,
+    date: date,
+    meal: meal
+  };
+
+  const saved = JSON.parse(localStorage.getItem("foodRecords") || "[]");
+  saved.push(newRecord);
+  localStorage.setItem("foodRecords", JSON.stringify(saved));
     form.reset();
   });
 

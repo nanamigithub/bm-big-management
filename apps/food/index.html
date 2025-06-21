@@ -49,6 +49,12 @@
     <h2>食物记录</h2>
     <form id="food-form">
       <input type="text" id="food-input" placeholder="输入食物名称" required />
+      <!-- ✅ 在这里插入 -->
+        <select id="meal-select" required>
+        <option value="早餐">早餐</option>
+        <option value="午餐">午餐</option>
+        <option value="晚餐">晚餐</option>
+       </select>
       <input type="number" id="calorie-input" placeholder="热量 (kcal)" required />
       <button type="submit">添加</button>
       <a href="/bm-big-management/apps/food-vision/" target="_blank" class="btn-link">
