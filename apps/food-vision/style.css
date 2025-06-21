@@ -1,5 +1,26 @@
-/* Food Vision style */
-#result {
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background-color: #f8f9fa;
+}
+header {
+  background: #2563eb;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+.back-link {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+main {
+  padding: 2em;
+}
+.nutrition-box {
   background-color: #ffffff;
   border: 1px solid #ddd;
   padding: 1em;
