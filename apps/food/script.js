@@ -32,13 +32,13 @@ document.addEventListener("DOMContentLoaded", () => {
 const saved = JSON.parse(localStorage.getItem("foodRecords") || "[]");
 
 // ⚠️ 过滤掉旧结构的数据
-const cleaned = saved.filter(r => r.food && r.date && r.meal);
+//const cleaned = saved.filter(r => r.food && r.date && r.meal);
 
 // 添加新记录
 cleaned.push(newRecord);
 
 // 覆盖写入
-localStorage.setItem("foodRecords", JSON.stringify(cleaned));
+localStorage.setItem("foodRecords", JSON.stringify(saved));
 
     form.reset();
   });
