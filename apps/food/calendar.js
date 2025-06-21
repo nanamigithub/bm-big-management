@@ -4,13 +4,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const data = JSON.parse(localStorage.getItem("foodRecords") || "[]");
 
   const events = [];
-  data.forEach(({ food, calorie, date, meal }) => {
-    const title = `${meal}：${food}`;
-    events.push({
-      title,
-      start: date
-    });
-  });
+  data.forEach(record => {
+  if (record.food && record.date && record.meal) {
+    const title = `${record.meal}：${record.food}`;
+    events.push({ title, start: record.date });
+  }
+});
 
   const calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
