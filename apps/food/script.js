@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 从 localStorage 加载数据
   const data = JSON.parse(localStorage.getItem("foodRecords") || "[]");
-  data.forEach(({ name, calorie }) => addRow(name, calorie));
+  data.forEach(({ name, calorie }) => addRow(name, calorie,date,meal));
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!food || !calorie) return;
 
-    addRow(food, calorie);
+    addRow(food, calorie,date,meal);
     saveData();
     // === 添加新的存储结构（含日期）===
     const newRecord = {
@@ -31,11 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
     form.reset();
   });
 
-  function addRow(food, calorie) {
+  function addRow(food, calorie,date,meal) {
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${food}</td>
       <td>${calorie}</td>
+      <td>${date}</td>
+      <td>${meal}</td>
       <td><button class="delete-btn">删除</button></td>
     `;
     row.querySelector(".delete-btn").addEventListener("click", () => {
