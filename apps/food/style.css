@@ -19,3 +19,18 @@ td, th {
   padding: 0.5em;
   text-align: center;
 }
+
+a.btn-link {
+  display: inline-block;
+  padding: 0.5em 1em;
+  background-color: #2563eb;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+a.btn-link:hover {
+  background-color: #1d4ed8;
+}
