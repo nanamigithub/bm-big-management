@@ -28,10 +28,18 @@ document.addEventListener("DOMContentLoaded", () => {
     date: date,
     meal: meal
   };
+  
+const saved = JSON.parse(localStorage.getItem("foodRecords") || "[]");
 
-  const saved = JSON.parse(localStorage.getItem("foodRecords") || "[]");
-  saved.push(newRecord);
-  localStorage.setItem("foodRecords", JSON.stringify(saved));
+// ⚠️ 过滤掉旧结构的数据
+const cleaned = saved.filter(r => r.food && r.date && r.meal);
+
+// 添加新记录
+cleaned.push(newRecord);
+
+// 覆盖写入
+localStorage.setItem("foodRecords", JSON.stringify(cleaned));
+
     form.reset();
   });
 
