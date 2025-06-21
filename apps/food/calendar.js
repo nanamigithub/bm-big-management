@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const data = JSON.parse(localStorage.getItem("foodRecords") || "[]");
 
   const events = [];
-  data.forEach(({ food, calories, date, meal }) => {
+  data.forEach(({ food, calorie, date, meal }) => {
     const title = `${meal}：${food}`;
     events.push({
       title,
