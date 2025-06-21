@@ -13,22 +13,22 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const food = document.getElementById("food-input").value.trim();
-    const calorie = document.getElementById("calorie-input").value;
+    const calories = document.getElementById("calories-input").value;
     const date = document.getElementById("date-input").value || new Date().toISOString().split("T")[0];// 添加当前日期
     const meal = document.getElementById("meal-select").value; // 可以未来扩展为早餐/午餐/晚餐选择项
 
-    if (!food || !calorie) return;
+    if (!food || !calories) return;
 
-    addRow(food, calorie,date,meal);
+    addRow(food, calories,date,meal);
     saveData();
     // === 添加新的存储结构（含日期）===
     const newRecord = {
     food: food,
-    calories: calorie,
+    calories: calories,
     date: date,
     meal: meal
   };
-  
+
 const saved = JSON.parse(localStorage.getItem("foodRecords") || "[]");
 
 // ⚠️ 过滤掉旧结构的数据
@@ -43,11 +43,11 @@ localStorage.setItem("foodRecords", JSON.stringify(cleaned));
     form.reset();
   });
 
-  function addRow(food, calorie,date,meal) {
+  function addRow(food, calories,date,meal) {
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${food}</td>
-      <td>${calorie}</td>
+      <td>${calories}</td>
       <td>${date}</td>
       <td>${meal}</td>
       <td><button class="delete-btn">删除</button></td>
@@ -65,7 +65,7 @@ localStorage.setItem("foodRecords", JSON.stringify(cleaned));
       const cells = row.querySelectorAll("td");
       return {
         name: cells[0].textContent,
-        calorie: cells[1].textContent
+        calories: cells[1].textContent
       };
     });
     localStorage.setItem("foodRecords", JSON.stringify(data));
