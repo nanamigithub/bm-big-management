@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>App | food</title>
+  <title>Food Vision</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../../style.css" />
   <link rel="stylesheet" href="style.css" />
@@ -29,44 +29,22 @@
     main {
       padding: 2em;
     }
-    form {
-      margin-bottom: 1em;
-      display: flex;
-      gap: 1em;
-    }
-    input[type="text"], input[type="number"] {
-      padding: 0.5em;
-      flex: 1;
+    #preview {
+      max-width: 300px;
+      margin-top: 1em;
     }
   </style>
 </head>
 <body>
   <header>
     <a href="../../modules.html" class="back-link">← Back</a>
-    <h1>food App</h1>
+    <h1>Food Vision</h1>
   </header>
   <main>
-    <h2>食物记录</h2>
-    <form id="food-form">
-      <input type="text" id="food-input" placeholder="输入食物名称" required />
-      <input type="number" id="calorie-input" placeholder="热量 (kcal)" required />
-      <button type="submit">添加</button>
-      <a href="../food-vision/" target="_blank">
-  <button>使用图像识别食物</button>
-</a>
-
-    </form>
-
-    <table id="food-table">
-      <thead>
-        <tr>
-          <th>食物</th>
-          <th>热量 (kcal)</th>
-          <th>操作</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+    <h2>上传图片以识别食物</h2>
+    <input type="file" id="image-input" accept="image/*" />
+    <img id="preview" src="" alt="预览图像" style="display:none;" />
+    <div id="result" style="margin-top: 1em;"></div>
   </main>
   <script src="script.js"></script>
 </body>
