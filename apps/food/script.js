@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 从 localStorage 加载数据
   const data = JSON.parse(localStorage.getItem("foodRecords") || "[]");
-  data.forEach(({ name, calorie }) => addRow(name, calorie,date,meal));
+  data.forEach(({ food, calorie,date,meal }) => addRow(food, calorie,date,meal));
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
