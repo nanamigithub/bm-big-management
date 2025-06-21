@@ -29,6 +29,15 @@
     main {
       padding: 2em;
     }
+    form {
+      margin-bottom: 1em;
+      display: flex;
+      gap: 1em;
+    }
+    input[type="text"], input[type="number"] {
+      padding: 0.5em;
+      flex: 1;
+    }
   </style>
 </head>
 <body>
@@ -37,7 +46,23 @@
     <h1>food App</h1>
   </header>
   <main>
-    <p>This is the template content for the <strong>food</strong> module.</p>
+    <h2>食物记录</h2>
+    <form id="food-form">
+      <input type="text" id="food-input" placeholder="输入食物名称" required />
+      <input type="number" id="calorie-input" placeholder="热量 (kcal)" required />
+      <button type="submit">添加</button>
+    </form>
+
+    <table id="food-table">
+      <thead>
+        <tr>
+          <th>食物</th>
+          <th>热量 (kcal)</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
   </main>
   <script src="script.js"></script>
 </body>
