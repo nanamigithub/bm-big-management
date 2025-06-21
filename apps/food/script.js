@@ -35,6 +35,7 @@ const saved = JSON.parse(localStorage.getItem("foodRecords") || "[]");
 //const cleaned = saved.filter(r => r.food && r.date && r.meal);
 
 // 添加新记录
+//cleaned.push(newRecord);
 cleaned.push(newRecord);
 
 // 覆盖写入
