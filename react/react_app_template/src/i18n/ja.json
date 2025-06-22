@@ -1,0 +1,9 @@
+{
+  "app.title": "アプリのタイトル",
+  "button.submit": "送信",
+  "button.cancel": "キャンセル",
+  "form.name": "名前",
+  "form.value": "値",
+  "table.header.name": "名前",
+  "table.header.value": "値"
+}
