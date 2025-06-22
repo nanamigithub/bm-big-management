@@ -1,12 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>Index</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>一覧画面</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Index</h1>
+  <div class="container">
+    <h1><span class="icon">📋</span> 一覧画面</h1>
+    <button class="btn-add" onclick="location.href='form.html'">➕ 新増</button>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>名称</th>
+          <th>ログイン日</th>
+          <th>更新日</th>
+          <th>備考</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody id="data-table">
+        <!-- JSでデータ挿入 -->
+      </tbody>
+    </table>
+    <div class="pagination" id="pagination"></div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
