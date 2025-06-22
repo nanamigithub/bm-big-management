@@ -1,73 +1,29 @@
-let data = [];
+const supabaseUrl = 'https://iwdyzfsunnyqcwipttql.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml3ZHl6ZnN1bm55cWN3aXB0dHFsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA1ODk1NzAsImV4cCI6MjA2NjE2NTU3MH0.A9b8BxZLeFK1ZPeIBwSppn8r8Oz9nIN1pR8cDqAreH8';
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-document.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(location.search);
-  const id = params.get("id");
+document.getElementById('saveBtn').addEventListener('click', async () => {
+  const user = await supabase.auth.getUser();
+  const userId = user.data?.user?.id;
 
-  fetch("data.json")
-    .then(response => response.json())
-    .then(json => {
-      data = json;
-      if (document.getElementById("data-table")) {
-        renderTable();
-        renderPagination();
-      }
-      if (id) {
-        const target = data.find(d => d.id == id);
-        if (target) {
-          document.getElementById("id").value = target.id;
-          document.getElementById("name").value = target.name;
-          document.getElementById("loginDate").value = target.loginDate;
-          document.getElementById("updateDate").value = target.updateDate;
-          document.getElementById("remark").value = target.remark;
-        }
-      }
-    });
+  if (!userId) {
+    alert('请先登录');
+    return;
+  }
 
-  const form = document.getElementById("edit-form");
-  if (form) {
-    form.addEventListener("submit", e => {
-      e.preventDefault();
-      alert("保存機能は未実装（静的JSON）");
-    });
+  const foodData = {
+    user_name: document.getElementById('user_name').value,
+    loginDate: document.getElementById('loginDate').value,
+    updateDate: document.getElementById('updateDate').value,
+    remark: document.getElementById('remark').value,
+    food_name: document.getElementById('food_name').value,
+    user_id: userId,
+  };
+
+  const { error } = await supabase.from('foodlist').insert([foodData]);
+  if (error) {
+    alert('保存失败：' + error.message);
+  } else {
+    alert('保存成功！');
   }
 });
-
-const rowsPerPage = 10;
-let currentPage = 1;
-
-function renderTable() {
-  const table = document.getElementById("data-table");
-  table.innerHTML = "";
-  const start = (currentPage - 1) * rowsPerPage;
-  const end = start + rowsPerPage;
-  const visible = data.slice(start, end);
-
-  visible.forEach(row => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${row.id}</td><td>${row.name}</td><td>${row.loginDate}</td><td>${row.updateDate}</td><td>${row.remark}</td>
-      <td>
-        <a href="detail.html?id=${row.id}">🔍</a>
-        <a href="form.html?id=${row.id}">✏️</a>
-        <a href="delete.html?id=${row.id}">🗑️</a>
-      </td>`;
-    table.appendChild(tr);
-  });
-}
-
-function renderPagination() {
-  const pageCount = Math.ceil(data.length / rowsPerPage);
-  const pagination = document.getElementById("pagination");
-  pagination.innerHTML = "";
-  for (let i = 1; i <= pageCount; i++) {
-    const btn = document.createElement("button");
-    btn.innerText = i;
-    if (i === currentPage) btn.disabled = true;
-    btn.onclick = () => {
-      currentPage = i;
-      renderTable();
-    };
-    pagination.appendChild(btn);
-  }
-}
