@@ -2,72 +2,15 @@
   {
     "id": 1,
     "name": "サンプル1",
-    "loginDate": "2025/06/01",
-    "updateDate": "2025/06/20",
-    "notes": "備考"
+    "loginDate": "2025-06-01",
+    "updateDate": "2025-06-20",
+    "remark": "テスト"
   },
   {
     "id": 2,
     "name": "サンプル2",
-    "loginDate": "2025/06/01",
-    "updateDate": "2025/06/20",
-    "notes": "備考"
-  },
-  {
-    "id": 3,
-    "name": "サンプル3",
-    "loginDate": "2025/06/01",
-    "updateDate": "2025/06/20",
-    "notes": "備考"
-  },
-  {
-    "id": 4,
-    "name": "サンプル4",
-    "loginDate": "2025/06/01",
-    "updateDate": "2025/06/20",
-    "notes": "備考"
-  },
-  {
-    "id": 5,
-    "name": "サンプル5",
-    "loginDate": "2025/06/01",
-    "updateDate": "2025/06/20",
-    "notes": "備考"
-  },
-  {
-    "id": 6,
-    "name": "サンプル6",
-    "loginDate": "2025/06/01",
-    "updateDate": "2025/06/20",
-    "notes": "備考"
-  },
-  {
-    "id": 7,
-    "name": "サンプル7",
-    "loginDate": "2025/06/01",
-    "updateDate": "2025/06/20",
-    "notes": "備考"
-  },
-  {
-    "id": 8,
-    "name": "サンプル8",
-    "loginDate": "2025/06/01",
-    "updateDate": "2025/06/20",
-    "notes": "備考"
-  },
-  {
-    "id": 9,
-    "name": "サンプル9",
-    "loginDate": "2025/06/01",
-    "updateDate": "2025/06/20",
-    "notes": "備考"
-  },
-  {
-    "id": 10,
-    "name": "サンプル10",
-    "loginDate": "2025/06/01",
-    "updateDate": "2025/06/20",
-    "notes": "備考"
+    "loginDate": "2025-06-01",
+    "updateDate": "2025-06-20",
+    "remark": "テスト"
   }
-  // ... 可继续添加到 30 条
 ]
