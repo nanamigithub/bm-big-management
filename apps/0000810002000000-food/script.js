@@ -1,10 +1,23 @@
-const data = Array.from({ length: 30 }).map((_, i) => ({
-  id: i + 1,
-  name: "サンプル" + (i + 1),
-  loginDate: "2025/06/01",
-  updateDate: "2025/06/20",
-  remark: "備考"
-}));
+// const data = Array.from({ length: 30 }).map((_, i) => ({
+//   id: i + 1,
+//   name: "サンプル" + (i + 1),
+//   loginDate: "2025/06/01",
+//   updateDate: "2025/06/20",
+//   remark: "備考"
+// }));
+let data = [];
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("data.json")
+    .then(response => response.json())
+    .then(json => {
+      data = json;
+      renderTable();
+      renderPagination();
+    })
+    .catch(error => console.error("加载 data.json 出错：", error));
+});
+
 
 const rowsPerPage = 10;
 let currentPage = 1;
