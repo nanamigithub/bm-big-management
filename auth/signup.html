@@ -3,6 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <title>サインアップ</title>
+  <script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+  const supabase = createClient('https://YOUR_PROJECT.supabase.co', 'YOUR_PUBLIC_ANON_KEY');
+
+  document.getElementById('signupSubmit').addEventListener('click', async () => {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const { error } = await supabase.auth.signUp({ email, password });
+    if (error) {
+      alert('登録失敗: ' + error.message);
+    } else {
+      alert('登録成功! ログインしてください');
+      window.location.href = 'login.html';
+    }
+  });
+</script>
+  <script type="module" src="auth.js"></script>
+
 </head>
 <body>
   <h2>サインアップ</h2>
