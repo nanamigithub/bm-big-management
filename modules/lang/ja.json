@@ -1,0 +1,9 @@
+{
+  "homepage.title": "BMシステムへようこそ",
+  "homepage.description": "モジュール化された拡張可能な個人管理システムです。",
+  "homepage.apps": "有効なモジュール一覧",
+  "btn.plan": "計画 PLAN",
+  "btn.work": "仕事 WORK",
+  "btn.life": "生活 LIFE",
+  "btn.study": "学習 STUDY"
+}

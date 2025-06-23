@@ -13,7 +13,7 @@ document.getElementById("loginBtn")?.addEventListener("click", async () => {
     alert('ログイン失敗: ' + error.message);
     window.location.href = '/bm-big-management/apps/0000810002000000-food/auth/signup.html';
   } else {
-    window.location.href = '/bm-big-management/index.html';
+    window.location.href = '/bm-big-management/pulic/index.html';
   }
 });
 
@@ -24,6 +24,7 @@ document.getElementById("signupBtn")?.addEventListener("click", async () => {
     if (error) {
     alert('ログイン失敗: ' + error.message);
   } else {
+    alert('登録成功！ログインしてください');
     window.location.href = '/bm-big-management/apps/0000810002000000-food/auth/login.html';
   }
   console.log('user signed up:', error);
