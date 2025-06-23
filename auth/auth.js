@@ -11,7 +11,7 @@ document.getElementById("loginBtn")?.addEventListener("click", async () => {
   const { error } = await supabase.auth.signInWithPassword({ email, password });
   if (error) {
     alert('ログイン失敗: ' + error.message);
-    window.location.href = '/bm-big-management/apps/0000810002000000-food/auth/signup.html';
+    window.location.href = '/bm-big-management/auth/signup.html';
   } else {
     window.location.href = '/bm-big-management/pulic/index.html';
   }
@@ -22,10 +22,10 @@ document.getElementById("signupBtn")?.addEventListener("click", async () => {
   const password = document.getElementById("password").value;
   const { error } = await supabase.auth.signUp({ email, password });
     if (error) {
-    alert('ログイン失敗: ' + error.message);
+    alert('登録失敗: ' + error.message);
   } else {
     alert('登録成功！ログインしてください');
-    window.location.href = '/bm-big-management/apps/0000810002000000-food/auth/login.html';
+    window.location.href = '/bm-big-management/auth/login.html';
   }
   console.log('user signed up:', error);
 });
