@@ -20,7 +20,14 @@ document.getElementById("loginBtn")?.addEventListener("click", async () => {
 document.getElementById("signupBtn")?.addEventListener("click", async () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  const { error } = await supabase.auth.signUp({ email, password });
+const { error } = await supabase.auth.signUp({
+  email,
+  password,
+  options: {
+    emailRedirectTo: 'https://nanamigithub.github.io/bm-big-management/auth/confirm.html'
+  }
+});
+
     if (error) {
     alert('登録失敗: ' + error.message);
   } else {
