@@ -11,7 +11,6 @@ document.getElementById("loginBtn")?.addEventListener("click", async () => {
   const { error } = await supabase.auth.signInWithPassword({ email, password });
   if (error) {
     alert('ログイン失敗: ' + error.message);
-    window.location.href = '/bm-big-management/auth/signup.html';
   } else {
     window.location.href = '/bm-big-management/pulic/index.html';
   }

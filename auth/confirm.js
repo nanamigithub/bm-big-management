@@ -1,15 +1,34 @@
 import { supabase } from './auth.js';
 
-supabase.auth.onAuthStateChange((event, session) => {
-  if (event === 'SIGNED_IN') {
-    alert('メール認証が完了しました。ログインしてください。');
-    window.location.href = '/bm-big-management/auth/login.html';
-  }
-});
+const urlParams = new URLSearchParams(window.location.search);
+const token = urlParams.get('token');
+const type = urlParams.get('type');
+const statusEl = document.getElementById("status");
 
-// 強制ログインチェック（メールリンクの token を検出）
-supabase.auth.getSession().then(({ data, error }) => {
-  if (data?.session) {
-    window.location.href = '/bm-big-management/auth/login.html';
+async function confirmEmail() {
+  if (!token || !type) {
+    statusEl.textContent = "⚠️ トークン情報が不足しています。無効なリンクです。";
+    statusEl.className = 'error';
+    return;
   }
-});
+
+  const { error } = await supabase.auth.verifyOtp({
+    type,
+    token,
+  });
+
+  if (error) {
+    console.error(error);
+    statusEl.textContent = `❌ メール確認に失敗しました：${error.message}`;
+    statusEl.className = 'error';
+  } else {
+    statusEl.textContent = "✅ メール確認に成功しました。ログインページに移動します...";
+    statusEl.className = 'success';
+    // 2秒後にログイン画面へジャンプ
+    setTimeout(() => {
+      window.location.href = "/bm-big-management/auth/login.html";
+    }, 2000);
+  }
+}
+
+confirmEmail();
