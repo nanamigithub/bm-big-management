@@ -1,4 +1,4 @@
-import { supabase } from './auth.js';
+import supabase from './auth.js';
 
 const urlParams = new URLSearchParams(window.location.search);
 const token = urlParams.get('token');
