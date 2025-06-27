@@ -7,19 +7,45 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>📋 一覧画面</h1>
-    <button class="btn-add" onclick="location.href='form.html'">➕ 新増</button>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th><th>名称</th><th>ログイン日</th><th>更新日</th><th>備考</th><th>操作</th>
-        </tr>
-      </thead>
-      <tbody id="data-table"></tbody>
-    </table>
-    <div id="pagination" class="pagination"></div>
-  </div>
-  <script src="script.js"></script>
+    <!-- 语言选择区域 -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1em;">
+        <div>
+            <label for="lang">🌐 言語 / 语言 / Language:</label>
+            <select id="lang">
+                <option value="ja">日本語</option>
+                <option value="zh">中文</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+        <!--颜色主题选择区域 -->
+        <div>
+            <label for="theme">🎨 テーマ / 主题 / Theme:</label>
+            <select id="theme">
+                <option value="light">明るい</option>
+                <option value="dark">暗い</option>
+                <option value="sorin">Sorin</option>
+            </select>
+        </div>
+    </div>
+    <!--一覧画面区域 -->
+    <div class="container">
+        <h1>📋 一覧画面</h1>
+        <button class="btn-add" onclick="location.href='form.html'">➕ 新増</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>名称</th>
+                    <th>ログイン日</th>
+                    <th>更新日</th>
+                    <th>備考</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="data-table"></tbody>
+        </table>
+        <div id="pagination" class="pagination"></div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

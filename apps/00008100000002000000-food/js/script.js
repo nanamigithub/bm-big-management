@@ -28,3 +28,67 @@ document.getElementById('saveBtn').addEventListener('click', async () => {
     alert('保存成功！');
   }
 });
+
+// ===== 🌐 多语言切换功能 =====
+const translations = {
+    ja: {
+        title: "編集ページ",
+        save: "保存",
+        back: "戻る",
+        user_name: "名前：",
+        loginDate: "ログイン日：",
+        updateDate: "更新日：",
+        remark: "備考：",
+        food_id: "食品ID：",
+        food_name: "食品名："
+    },
+    zh: {
+        title: "编辑页面",
+        save: "保存",
+        back: "返回",
+        user_name: "名称：",
+        loginDate: "登录日：",
+        updateDate: "更新日：",
+        remark: "备注：",
+        food_id: "食品ID：",
+        food_name: "食品名称："
+    },
+    en: {
+        title: "Edit Page",
+        save: "Save",
+        back: "Back",
+        user_name: "Name:",
+        loginDate: "Login Date:",
+        updateDate: "Update Date:",
+        remark: "Remark:",
+        food_id: "Food ID:",
+        food_name: "Food Name:"
+    }
+};
+
+const langSelect = document.getElementById('lang');
+if (langSelect) {
+    langSelect.addEventListener('change', (e) => {
+        const lang = e.target.value;
+        const t = translations[lang];
+        document.title = t.title;
+        document.querySelector("h1").innerText = t.title;
+        document.querySelector("label[for='user_name']").innerText = t.user_name;
+        document.querySelector("label[for='loginDate']").innerText = t.loginDate;
+        document.querySelector("label[for='updateDate']").innerText = t.updateDate;
+        document.querySelector("label[for='remark']").innerText = t.remark;
+        document.querySelector("label[for='food_id']").innerText = t.food_id;
+        document.querySelector("label[for='food_name']").innerText = t.food_name;
+        document.getElementById("saveBtn").innerText = t.save;
+        document.getElementById("back").innerText = t.back;
+    });
+}
+
+// ===== 🎨 主题切换功能 =====
+const themeSelect = document.getElementById('theme');
+if (themeSelect) {
+    themeSelect.addEventListener('change', (e) => {
+        document.body.className = e.target.value;
+    });
+}
+

@@ -7,27 +7,48 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
-  <h1>編集ページ</h1>
-  <label for="user_name">名称：</label>
-  <input type="text" id="user_name"><br>
+    <div style="display: flex; justify-content: space-between;">
+        <div>
+            <label for="lang">🌐 言語:</label>
+            <select id="lang">
+                <option value="ja">日本語</option>
+                <option value="zh">中文</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+        <div>
+            <label for="theme">🎨 テーマ:</label>
+            <select id="theme">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="sorin">Sorin</option>
+            </select>
+        </div>
+    </div>
 
-  <label for="loginDate">ログイン日：</label>
-  <input type="date" id="loginDate"><br>
+    <h1>編集ページ</h1>
+    <label for="user_name">名称：</label>
+    <input type="text" id="user_name"><br>
 
-  <label for="updateDate">更新日：</label>
-  <input type="date" id="updateDate"><br>
+    <label for="loginDate">ログイン日：</label>
+    <input type="date" id="loginDate"><br>
 
-  <label for="remark">備考：</label>
-  <input type="text" id="remark"><br>
+    <label for="updateDate">更新日：</label>
+    <input type="date" id="updateDate"><br>
 
-  <label for="food_id">食品ID：</label>
-  <input type="number" id="food_id"><br>
+    <label for="remark">備考：</label>
+    <input type="text" id="remark"><br>
 
-  <label for="food_name">食品名：</label>
-  <input type="text" id="food_name"><br>
+    <label for="food_id">食品ID：</label>
+    <input type="number" id="food_id"><br>
 
-  <button id="saveBtn">保存</button>
+    <label for="food_name">食品名：</label>
+    <input type="text" id="food_name"><br>
 
-  <script src="script.js"></script>
+    <button id="saveBtn">保存</button>
+
+    <button id="back">返回</button>
+
+    <script src="script.js"></script>
 </body>
 </html>

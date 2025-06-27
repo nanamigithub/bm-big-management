@@ -65,3 +65,18 @@ th {
   color: white;
   font-weight: bold;
 }
+
+body.light {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.dark {
+    background-color: #111111;
+    color: #eeeeee;
+}
+
+body.sorin {
+    background-color: #fdf3fb;
+    color: #b4006e;
+}
