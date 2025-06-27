@@ -21,9 +21,15 @@ document.getElementById('saveBtn').addEventListener('click', async () => {
     user_id: userId
     };
 
-    document.getElementById('back').addEventListener('click', () => {
-        window.location.href = "index.html"; // 如果你是从 index.html 来的
+    document.addEventListener("DOMContentLoaded", function () {
+        const backBtn = document.getElementById("back");
+        if (backBtn) {
+            backBtn.addEventListener("click", function () {
+                window.location.href = "index.html"; 
+            });
+        }
     });
+
 
 
   const { error } = await supabase.from('foodlist').insert([data]);
