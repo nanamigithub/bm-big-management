@@ -19,7 +19,12 @@ document.getElementById('saveBtn').addEventListener('click', async () => {
     food_id: parseInt(document.getElementById('food_id').value),
     food_name: document.getElementById('food_name').value,
     user_id: userId
-  };
+    };
+
+    document.getElementById('back').addEventListener('click', () => {
+        window.location.href = "index.html"; // 如果你是从 index.html 来的
+    });
+
 
   const { error } = await supabase.from('foodlist').insert([data]);
   if (error) {
@@ -72,15 +77,16 @@ if (langSelect) {
         const lang = e.target.value;
         const t = translations[lang];
         document.title = t.title;
-        document.querySelector("h1").innerText = t.title;
-        document.querySelector("label[for='user_name']").innerText = t.user_name;
-        document.querySelector("label[for='loginDate']").innerText = t.loginDate;
-        document.querySelector("label[for='updateDate']").innerText = t.updateDate;
-        document.querySelector("label[for='remark']").innerText = t.remark;
-        document.querySelector("label[for='food_id']").innerText = t.food_id;
-        document.querySelector("label[for='food_name']").innerText = t.food_name;
-        document.getElementById("saveBtn").innerText = t.save;
-        document.getElementById("back").innerText = t.back;
+        const $ = (sel) => document.querySelector(sel);
+        $("h1").innerText = t.title;
+        $("label[for='user_name']").innerText = t.user_name;
+        $("label[for='loginDate']").innerText = t.loginDate;
+        $("label[for='updateDate']").innerText = t.updateDate;
+        $("label[for='remark']").innerText = t.remark;
+        $("label[for='food_id']").innerText = t.food_id;
+        $("label[for='food_name']").innerText = t.food_name;
+        $("#saveBtn").innerText = t.save;
+        $("#back").innerText = t.back;
     });
 }
 
